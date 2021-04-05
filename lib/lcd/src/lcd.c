@@ -114,11 +114,11 @@ void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2)
 	else if(USE_HORIZONTAL==2)
 	{
 		LCD_WR_REG(0x2a);  // Column address setting
-		LCD_WR_DATA(x1+1);
-		LCD_WR_DATA(x2+1);
+		LCD_WR_DATA(x1);
+		LCD_WR_DATA(x2);
 		LCD_WR_REG(0x2b);  // row address setting
-		LCD_WR_DATA(y1+26);
-		LCD_WR_DATA(y2+26);
+		LCD_WR_DATA(y1+24);
+		LCD_WR_DATA(y2+24);
 		LCD_WR_REG(0x2c);  // Memory write
 	}
 	else
@@ -248,7 +248,7 @@ void Lcd_Init(void)
 	LCD_WR_REG(0x11); 	//SLPOUT
 	delay_1ms(100);
 
-	LCD_WR_REG(0x21); 	//INVON
+	LCD_WR_REG(0x22); 	//INVON
 
 	LCD_WR_REG(0xB1); 	//FRMCTRL1 - Full color
 	LCD_WR_DATA8(0x05); // Framerate = 333khz / (25) * (196) = 67.9fps
